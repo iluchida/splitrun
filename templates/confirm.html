@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>確認画面</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>入力内容の確認</h1>
+        <form action="submit" method="POST">
+
+            {% set questions = {
+            "design": "ユーザー体験を向上させるために、どのようなデザイン思考を導入すべきですか？",
+            "creative": "効果的な広告クリエイティブを制作するには、どのような要素を意識すべきですか？",
+            "distribution": "広告配信先を選定する際、どのようなデータや指標をもとに意思決定するのが良いですか？",
+            "validation": "ペルソナ設計や顧客インサイトを抽出するために、どのような検証プロセスが有効でしょうか？",
+            "competitive": "自社サービスの市場優位性を、競合と比較してどのようにアピールすべきだと考えますか？"
+            } %}
+
+            {% for key, label in questions.items() %}
+            <div class="form-group">
+                <h3>{{ label }}</h3>
+                <p><strong>あなたの入力:</strong><br>{{ data.get(key, "") | replace('\n', '<br>') | safe }}</p>
+
+                {% if ai_answers and ai_answers.get(key) %}
+                {% set full = ai_answers[key] %}
+                {% if full|length > 100 and "エラー" not in full %}
+                {% set short = full[:100] ~ '…' %}
+                {% else %}
+                {% set short = full %}
+                {% endif %}
+                <p><strong>AIの回答:</strong><br>{{ short | replace('\n', '<br>') | safe }}</p>
+                {% else %}
+                <p><strong>AIの回答:</strong><br><em>取得できませんでした</em></p>
+                {% endif %}
+            </div>
+            <hr>
+            {% endfor %}
+
+            <button type="submit">送信</button>
+        </form>
+    </div>
+</body>
+
+</html>

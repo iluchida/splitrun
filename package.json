@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build:scss": "sass src/scss/style.scss static/css/style.css --no-source-map --load-path=node_modules",
+    "watch:scss": "sass --watch src/scss/style.scss:static/css/style.css --load-path=node_modules"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0"
+  }
+}

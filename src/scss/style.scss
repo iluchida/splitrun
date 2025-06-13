@@ -1,0 +1,11 @@
+// 変数・mixinの読み込み
+@use "config/variables";
+@use "config/mixins";
+
+// 共通パーツ
+@use "components/form-elements";
+
+// ページごとのスタイル
+@use "pages/form";
+@use "pages/confirm";
+@use "pages/result";

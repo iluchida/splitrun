@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>送信完了</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>ご回答ありがとうございました！</h1>
+        <p>AIによるフィードバックは以下のとおりです：</p>
+
+        {% set questions = {
+        "design": "ユーザー体験を向上させるために、どのようなデザイン思考を導入すべきですか？",
+        "creative": "効果的な広告クリエイティブを制作するには、どのような要素を意識すべきですか？",
+        "distribution": "広告配信先を選定する際、どのようなデータや指標をもとに意思決定するのが良いですか？",
+        "validation": "ペルソナ設計や顧客インサイトを抽出するために、どのような検証プロセスが有効でしょうか？",
+        "competitive": "自社サービスの市場優位性を、競合と比較してどのようにアピールすべきだと考えますか？"
+        } %}
+
+        {% if results %}
+        {% for key, answer in results.items() %}
+        <div class="form-group">
+            <h3>{{ questions.get(key, key) }}</h3>
+            <p><strong>AIの回答:</strong><br>{{ answer | replace('\n', '<br>') | safe }}</p>
+        </div>
+        <hr>
+        {% endfor %}
+        {% else %}
+        <p>AIの回答を取得できませんでした。</p>
+        {% endif %}
+
+        <p><a href="{{ url_for('index') }}">トップページに戻る</a></p>
+    </div>
+</body>
+
+</html>

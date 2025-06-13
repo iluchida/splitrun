@@ -1,0 +1,42 @@
+
+@use "../config/variables";
+@use "../config/mixins";
+form {
+    .form-group {
+      margin-bottom: variables.$spacing-base;
+  
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+  
+      textarea,
+      input,
+      select {
+        // @include input-style;
+      }
+  
+      .error {
+        // color: $danger-color;
+        font-size: 0.9em;
+        margin-top: 4px;
+      }
+    }
+  
+    button[type="submit"],
+    button[type="button"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+  
+      // &:hover {
+      //   background-color: color.adjust(#007bff, $lightness: -8%);
+      // }
+    }
+  }
+  

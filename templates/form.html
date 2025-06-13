@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AIマーケフォーム</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>マーケティング設問フォーム</h1>
+        <form action="confirm" method="POST" id="marketing-form">
+
+            <!-- デザイン思考（チェックリスト） -->
+            <div class="form-group">
+                <label data-question="design">ユーザー体験を向上させるために、どのようなデザイン思考を導入すべきですか？</label>
+                <div class="checklist">
+                    <label><input type="checkbox" name="design" value="共感"> 共感</label>
+                    <label><input type="checkbox" name="design" value="問題定義"> 問題定義</label>
+                    <label><input type="checkbox" name="design" value="アイデア出し"> アイデア出し</label>
+                    <label><input type="checkbox" name="design" value="プロトタイピング"> プロトタイピング</label>
+                    <label><input type="checkbox" name="design" value="テスト"> テスト</label>
+                </div>
+                <div class="loading" id="loading-design"></div>
+                <div class="ai-response" id="response-design"></div>
+                <input type="hidden" name="ai_design" id="hidden-design">
+            </div>
+
+            <!-- クリエイティブ（ラジオ） -->
+            <div class="form-group">
+                <label data-question="creative">効果的な広告クリエイティブを制作するには、どのような要素を意識すべきですか？</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="creative" value="印象的なビジュアル"> 印象的なビジュアル</label>
+                    <label><input type="radio" name="creative" value="訴求力のあるコピー"> 訴求力のあるコピー</label>
+                    <label><input type="radio" name="creative" value="明確なターゲット設定"> 明確なターゲット設定</label>
+                </div>
+                <div class="loading" id="loading-creative"></div>
+                <div class="ai-response" id="response-creative"></div>
+                <input type="hidden" name="ai_creative" id="hidden-creative">
+            </div>
+
+            <!-- 配信先（セレクト） -->
+            <div class="form-group">
+                <label for="distribution" data-question="distribution">広告配信先を選定する際、どのようなデータや指標をもとに意思決定するのが良いですか？</label>
+                <select name="distribution" id="distribution" required>
+                    <option value="">選択してください</option>
+                    <option value="CTRやCVR">CTRやCVR</option>
+                    <option value="オーディエンスデータ">オーディエンスデータ</option>
+                    <option value="リーチ数と頻度">リーチ数と頻度</option>
+                </select>
+                <div class="loading" id="loading-distribution"></div>
+                <div class="ai-response" id="response-distribution"></div>
+                <input type="hidden" name="ai_distribution" id="hidden-distribution">
+            </div>
+
+            <!-- 検証プロセス（テキストエリア） -->
+            <div class="form-group">
+                <label for="validation" data-question="validation">ペルソナ設計や顧客インサイトを抽出するために、どのような検証プロセスが有効でしょうか？</label>
+                <textarea name="validation" id="validation" required></textarea>
+                <div class="loading" id="loading-validation"></div>
+                <div class="ai-response" id="response-validation"></div>
+                <input type="hidden" name="ai_validation" id="hidden-validation">
+            </div>
+
+            <!-- 競合優位性（テキストエリア） -->
+            <div class="form-group">
+                <label for="competitive" data-question="competitive">自社サービスの市場優位性を、競合と比較してどのようにアピールすべきだと考えますか？</label>
+                <textarea name="competitive" id="competitive" required></textarea>
+                <div class="loading" id="loading-competitive"></div>
+                <div class="ai-response" id="response-competitive"></div>
+                <input type="hidden" name="ai_competitive" id="hidden-competitive">
+            </div>
+
+            <button type="submit">確認画面へ</button>
+        </form>
+    </div>
+
+    <script src="static/js/ai_response.js"></script>
+</body>
+
+</html>

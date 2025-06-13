@@ -1,0 +1,10 @@
+# 環境変数ファイル
+.env
+node_modules/
+venv/
+# ログ・キャッシュ
+__pycache__/
+*.pyc
+
+# AI回答キャッシュと保存データ
+data/
